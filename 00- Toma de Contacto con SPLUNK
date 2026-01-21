@@ -24,7 +24,7 @@ Splunk es una plataforma para la gestión y análisis de datos en tiempo real qu
 Deployment Server (Servidor de implementación): Distribuye configuraciones, aplicaciones y actualizaciones a los componentes de la infraestructura de Splunk.
 
 ##3.Componentes de Splunk
-3.1 Splunk Forwarder
+###3.1 Splunk Forwarder
 
 Envía datos desde sistemas fuente al servidor Splunk.
 
@@ -34,7 +34,7 @@ Hay dos tipos:
 
 	-->Heavy Forwarder: puede parsear y filtrar datos antes de enviarlos.
 
-3.2 Splunk Indexer
+###3.2 Splunk Indexer
 
 Recibe datos y los indexa.
 
@@ -42,7 +42,7 @@ Almacena los eventos en índices organizados y optimizados.
 
 Extrae campos automáticamente para búsquedas futuras.
 
-3.3 Splunk Search Head
+###3.3 Splunk Search Head
 
 Interfaz donde los analistas hacen consultas SPL.
 
@@ -50,7 +50,7 @@ Genera reportes, dashboards y alertas.
 
 Coordina la búsqueda distribuida si hay múltiples indexers.
 
-3.4 Splunk Deployment Server (opcional)
+###3.4 Splunk Deployment Server (opcional)
 
 Administra configuraciones y apps de forwarders de manera centralizada.
 
