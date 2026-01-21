@@ -1,0 +1,31 @@
+1️⃣ Objetivo
+
+  -->Analizar eventos de Windows Security en Splunk.
+
+  -->Identificar logins exitosos y fallidos.
+
+  -->Contar eventos por usuario y tipo.
+
+  -->Visualizar tendencias a lo largo del tiempo.
+
+Cuando realicemos nuestra primera consulta , deberíamos pensar 3 cosas:
+
+¿Dónde busco?--> En los índices
+
+¿Qué tipo de datos son? --> Filtramos por sourcetype
+
+¿Qué quiero ver? --> Campos/filtros
+
+
+Pero, qué es un indice. En Splunk, un índice hace referencia a un contenedor lógico, lugar donde se guardan eventos lógicos procesados para buscarlos rápido. Es como un cajón donde Splunk guarda eventos.
+📁 Archivador
+ ├── 📂 Cajón 1: Windows
+ ├── 📂 Cajón 2: Firewall           
+ ├── 📂 Cajón 3: Web
+
+Mundo real          Splunk
+Cajón               Index
+Documento           Evento
+Tipo de documento  Sourcetype
+
+Para probar nuestra primera búsqueda, vamos a filtrar por los indices de los eventos de windows.
