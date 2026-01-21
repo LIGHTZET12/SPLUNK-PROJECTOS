@@ -28,5 +28,11 @@ Cajón               Index
 Documento           Evento
 Tipo de documento  Sourcetype
 
-Para probar nuestra primera búsqueda, vamos a filtrar por los indices de los eventos de windows.
+Para probar nuestra primera búsqueda, vamos a filtrar por los indices de los eventos de windows. Para ello, hacemos la busqueda con index="wineventlog". Dentro de cada índice, podemos clickar y ver más información del log, como el tipo de evento, el timestamp,nombre del host, etc...
+<img width="1616" height="656" alt="Image" src="https://github.com/user-attachments/assets/595dc678-f8a7-4f36-8ddd-82d8a5dd34a8" />
+
+
+
+Ya tenemos filtrado por el cajón "wineventlog" y queremos añadir un filtro más, que nos devuelva los logs de seguridad. Para ello usamos la etiqueta sourcetype=WinEventLog:Security. Nos devuelve eventos relacionados con el inicio se sesión, por ejemplo, con los EventoCode 5624 o 4625 ( Exitoso o fallido)
+<img width="1902" height="883" alt="Image" src="https://github.com/user-attachments/assets/b3500ffa-30bc-4349-a222-97ac52dec749" />
 
