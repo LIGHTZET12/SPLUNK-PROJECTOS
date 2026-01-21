@@ -1,0 +1,83 @@
+  En este documento hacemos una introducción a lo que es Splunk, su funcionalidad y un poco su estructura, para más adelante, hacer uso del SIEM para practicar la búsqueda de logs.
+
+
+1.¿Qué es SPLUNK?
+Herramienta que recolecta información de cualquier fuente y nos las provee de vuelta para analizarlas. Muy útil para analizar cientos de logs que genera el Sistema Operativo.
+
+La idea es ser capaz tanto de buscar el tipo de log que queramos y analizarlo. Para ello, Splunk se encarga de indexar,  buscar, analizar y visualizar datos de la máquina ( LOGS ) a gran escala.
+
+2. Componentes principales de la arquitectura de Splunk: 
+
+→Universal Forwarder: Agente ligero instalado en las fuentes de datos para recopilar y enviar información a los indexadores. Requiere mínimos recursos y es ideal para entornos con gran volumen de datos. 
+
+→Indexer: Recibe los datos del forwarder, los indexa y los almacena en formatos optimizados para búsquedas. Es el núcleo del almacenamiento de datos en Splunk. 
+
+→Search Head (Cabezal de búsqueda): Interfaz de usuario que permite a los usuarios realizar búsquedas, crear dashboards, generar alertas y visualizar resultados. Puede distribuirse en múltiples instancias para escalar el rendimiento. 
+
+→Cluster Master (Maestro del clúster): Administra un grupo de indexadores, coordinando la replicación y distribución de datos para garantizar alta disponibilidad y tolerancia a fallos.
+
+ →License Master (Maestro de licencias): Gestiona las licencias de Splunk Enterprise y supervisa el uso de datos para asegurar el cumplimiento de los acuerdos. 
+
+Deployment Server (Servidor de implementación): Distribuye configuraciones, aplicaciones y actualizaciones a los componentes de la infraestructura de Splunk.
+
+3. Flujo de datos en Splunk
+ Los sistemas y aplicaciones generan eventos de forma nativa:
+	Sistemas Operativos = Windows Event log por ejemplo
+	Servicios = SSH, RPD, Directorio activo, etc…
+	Aplicaciones = Accesos, transacciones, logs de errores.
+	Dispositivos de red = Firewall, routers, IPS…
+Estos datos son texto plano que se escribe en archivos, registros binarios o streams,
+
+3.1 Primera Fase: Forwarder
+
+En primer lugar está el Forwarder. Este componente se encarga de leer los datos del sistema y enviarlos de forma segura a Splunk.
+Hay dos tipos : 
+	Universal Forwarder: Solo envía datos
+	Heavy Forwarder: Puede parsear y filtrar antes
+En esta fase splunk monitorea una fuente, por ejemplo WinEventLog://Security. Tras ello detecta eventos y le añade metadatos como el host, source , sourcetype… Y envía los datos al pipeline de indexación. OJO, EN ESTA FASE NO SE INDEXA NADA TODAVÍA.
+
+3.2 Segunda fase: Indexing
+Splunk convierte todo dato crudo ( raw data) en una estructura optimizada para búsquedas temporales y por términos, mantener el dato original intacto.
+
+En primer lugar, divide el flujo de texto en eventos individuales , determina dónde empieza y termina y extrae información mínima obligatoria. A esto se le conoce como PARSING
+Antes:
+<Event><System>...</System><EventData>...</EventData></Event>
+
+Después:
+1 evento = 1 unidad lógica de búsqueda
+
+¿Qué extrae Splunk es parsing?
+En esta fase Splunk SIEMPRE extrae:
+Campo
+Motivo
+_time
+Para búsquedas temporales
+host
+Origen del evento
+source
+Fuente exacta
+sourcetype
+Tipo de formato
+
+Bien es cierto, que a más campos que se añadan, más CPU consume. Por ello, de primeras no da todos los campos. Por ello solo indexa lo estrictamente necesario: 
+→Tokens
+→Tiempo
+→Metadatos básicos
+→Punteros a los raw data
+
+
+
+3.3 Buckets: El corazón del indexado
+Un bucket es un contenedor lógico que incluye raw data, metadatos, y archivos de índice. 
+Un bucket pasa por estados:
+Estado
+Significado
+hot
+Se están escribiendo eventos
+warm
+Cerrado, listo para búsquedas
+cold
+Más antiguo
+frozen
+Archivado o eliminado
+
