@@ -29,7 +29,7 @@ Documento           Evento
 Tipo de documento  Sourcetype
 
 Para probar nuestra primera búsqueda, vamos a filtrar por los indices de los eventos de windows. Para ello, hacemos la busqueda con index="wineventlog". Dentro de cada índice, podemos clickar y ver más información del log, como el tipo de evento, el timestamp,nombre del host, etc...
-https://github.com/LIGHTZET12/SPLUNK-PROJECTOS/blob/4808bd0891b422402ac5a423d2efd7dfba5ded9b/Proyecto%20Splunk%20%231%20%E2%80%93%20An%C3%A1lisis%20b%C3%A1sico/capturas/Captura%20de%20pantalla%20primer%20index.png
+![image alt](https://github.com/LIGHTZET12/SPLUNK-PROJECTOS/blob/4808bd0891b422402ac5a423d2efd7dfba5ded9b/Proyecto%20Splunk%20%231%20%E2%80%93%20An%C3%A1lisis%20b%C3%A1sico/capturas/Captura%20de%20pantalla%20primer%20index.png)
 
 
 
