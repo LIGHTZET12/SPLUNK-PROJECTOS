@@ -1,6 +1,6 @@
 En este documento hacemos una introducción a lo que es Splunk, su funcionalidad y un poco su estructura, para más adelante, hacer uso del SIEM para practicar la búsqueda de logs.
 
-1.¿Qué es SPLUNK?
+##1.¿Qué es SPLUNK?
 Splunk es una plataforma para la gestión y análisis de datos en tiempo real que permite:
 
 	-->Recoger datos de múltiples fuentes (logs de sistemas, aplicaciones, redes, etc.)
@@ -9,7 +9,7 @@ Splunk es una plataforma para la gestión y análisis de datos en tiempo real qu
 
 	-->Buscar, visualizar y analizar información mediante SPL (Search Processing Language)
 
-2. Componentes principales de la arquitectura de Splunk: 
+##2. Componentes principales de la arquitectura de Splunk:
 
 →Universal Forwarder: Agente ligero instalado en las fuentes de datos para recopilar y enviar información a los indexadores. Requiere mínimos recursos y es ideal para entornos con gran volumen de datos. 
 
@@ -23,7 +23,7 @@ Splunk es una plataforma para la gestión y análisis de datos en tiempo real qu
 
 Deployment Server (Servidor de implementación): Distribuye configuraciones, aplicaciones y actualizaciones a los componentes de la infraestructura de Splunk.
 
-Componentes de Splunk
+##3.Componentes de Splunk
 3.1 Splunk Forwarder
 
 Envía datos desde sistemas fuente al servidor Splunk.
