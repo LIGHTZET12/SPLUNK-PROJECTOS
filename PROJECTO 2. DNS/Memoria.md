@@ -20,5 +20,29 @@ Viendo estos datos, vemos que se ha hecho una consulta de alguien de la subred p
 
 Viendo un solo log de forma visual no es tan "coñazo". Pero si cargamos varios logs, al estar los datos contenidos en el _raw, no podemos hacer busquedas particulares como buscar logs por IP de destino, por el puerto fuente, etc... 
 
-Por ello,vamos a usar expresiones regulares para del _raw, crear
+Por ello,vamos a usar expresiones regulares para del _raw, dividir ese texto plano en atributos que nos interesen:
+index="dns_logs" | rex field=_raw "^(?<timestamp>\S+)\s+(?<event_id>\S+)\s+(?<src_ip>\S+)\s+(?<src_port>\S+)\s+(?<dst_ip>\S+)\s+(?<dst_port>\S+)\s+(?<protocol>\S+)\s+(?<session_id>\S+)\s+(?<host>\S+)\s+(?<field10>\S+)\s+(?<network>\S+)\s+(?<size>\S+)\s+(?<query_type>\S+)"
+
+Partes principales de la expresion:
+
+**^**
+Significa inicio de la línea.
+Nos asegura que la extracción empieza desde el primer carácter del _raw.
+
+**(?<nombre_campo>\S+)**
+
+(?<…>) → esto le dice a Splunk que asigne un nombre al valor capturado.
+
+nombre_campo → es el nombre que luego podrás usar en SPL (table timestamp src_ip ...).
+
+\S+ → significa uno o más caracteres que NO sean espacios.
+
+\S = cualquier carácter que no sea espacio
+
++ = uno o más caracteres consecutivos
+
+![image alt](https://github.com/LIGHTZET12/SPLUNK-PROJECTOS/blob/4671c5b3694f1e138ebfb2b733a867b222effb66/PROJECTO%202.%20DNS/capturas/3.png)
+
+añadido a la linea actual del search con | table, ponemos los atributos que queremos obtener del log, logrando así búsqueda concreta de un _raw.
+![image alt](https://github.com/LIGHTZET12/SPLUNK-PROJECTOS/blob/daad973b9c3e436012c05945b0a372c8d266c035/PROJECTO%202.%20DNS/capturas/4.png)
 
