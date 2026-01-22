@@ -1,1 +1,9 @@
-g
+En este projecto/práctica de laboratorio, voy a hacer un analisis de una serie de eventos DNS recogidos en un log el cual vamos a analizar en Splunk.
+
+PASOS PREVIOS:
+1. Crear un índice "dns_log" .
+2. Cargar el log en el apartado Add Data.
+3. Asociar el archivo( log) con el índice.
+
+A continuación , para probar que está cargado correctamente usamos index="dns_logs" | head 20 ( muestra los 20 primeros)
+![image alt](https://github.com/LIGHTZET12/SPLUNK-PROJECTOS/blob/101a63b5532df64c9f8fb54ddb4b43b6dd95c91b/PROJECTO%202.%20DNS/capturas/1.png)
