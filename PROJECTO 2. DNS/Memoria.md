@@ -7,3 +7,9 @@ PASOS PREVIOS:
 
 A continuación , para probar que está cargado correctamente usamos index="dns_logs" | head 20 ( muestra los 20 primeros)
 ![image alt](https://raw.githubusercontent.com/LIGHTZET12/SPLUNK-PROJECTOS/101a63b5532df64c9f8fb54ddb4b43b6dd95c91b/PROJECTO%202.%20DNS/capturas/1.png)
+
+
+
+Vamos a centrarnos primero en uno de ellos y vamos a analizarlo poco a poco. 
+
+![image alt](https://github.com/LIGHTZET12/SPLUNK-PROJECTOS/blob/26ca0d1c170245017c9871b8f668e34b856b1ee7/PROJECTO%202.%20DNS/capturas/2.png)
